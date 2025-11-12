@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Repay | UPI Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-blue-600 text-white p-4 text-center text-xl font-bold shadow">⚡ Quick Repay</header>
+  <main class="p-4">
+    <h2 class="text-lg font-semibold mb-4">Copy any UPI ID to make payment</h2>
+    <div id="productName" class="text-sm text-gray-600 mb-3"></div>
+    <div class="space-y-3">
+      <div class="flex justify-between items-center bg-white p-3 rounded shadow">
+        <span id="upi1">archerykashihills-7@okaxis</span>
+        <button onclick="copyUPI('upi1')" class="bg-blue-500 text-white px-3 py-1 rounded">Copy</button>
+      </div>
+      <div class="flex justify-between items-center bg-white p-3 rounded shadow">
+        <span id="upi2">r.biswas.11@superyes</span>
+        <button onclick="copyUPI('upi2')" class="bg-blue-500 text-white px-3 py-1 rounded">Copy</button>
+      </div>
+      <div class="flex justify-between items-center bg-white p-3 rounded shadow">
+        <span id="upi3">9678209465@upi</span>
+        <button onclick="copyUPI('upi3')" class="bg-blue-500 text-white px-3 py-1 rounded">Copy</button>
+      </div>
+    </div>
+    <p class="text-sm text-gray-500 mt-6">Pay with your favorite app:</p>
+    <div class="flex space-x-4 mt-2">
+      <div class="bg-white p-2 rounded shadow">Paytm</div>
+      <div class="bg-white p-2 rounded shadow">PhonePe</div>
+      <div class="bg-white p-2 rounded shadow">GPay</div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
