@@ -1,208 +1,176 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Payment</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repay</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 92%;
+      max-width: 480px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
 
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+.row:last-child {
+  border-bottom: none;
+}
 
-<style>
-  :root{
-    --top:#2f9bff;
-    --btn:#1672ff;
-    --success:#18b46b;
-    --muted:#6b7280;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:'Baloo 2', Arial, sans-serif;background:#f5f7fb}
-  .topbar{background:var(--top);color:#fff;padding:14px 0;text-align:center;font-weight:800;font-size:20px}
-  .wrap{max-width:420px;margin:18px auto;padding:12px}
-  .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
-  .small{color:var(--muted);font-weight:600}
-  .time{float:right;background:#e6f1ff;padding:4px 10px;border-radius:8px;color:var(--btn);font-weight:700}
-  .amount{font-size:20px;font-weight:700;margin-top:8px}
-  .label{margin-top:14px;font-weight:700;color:#222}
-  .upi-row{display:flex;gap:10px;margin-top:8px}
-  .upi-input{flex:1;padding:12px;border-radius:8px;border:1px solid #e8e8e8;font-weight:700}
-  .copy-btn{background:#fff;border:2px solid var(--btn);color:var(--btn);padding:8px 12px;border-radius:8px;font-weight:700;cursor:pointer}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
-  .app{border:1px solid #eef5ff;border-radius:10px;padding:12px;text-align:center;height:56px;display:flex;align-items:center;justify-content:center}
-  .utr{margin-top:14px}
-  .input-utr{width:100%;padding:12px;border-radius:10px;border:1px solid #e6e6e6;font-size:16px}
-  .submit-btn{display:block;width:100%;margin-top:14px;background:var(--btn);color:#fff;padding:14px;border-radius:30px;border:none;font-weight:700;font-size:16px;cursor:pointer}
-  .notice{margin-top:14px;color:#c42b2b;font-weight:700;font-size:14px}
-  .logos{display:flex;gap:6px;justify-content:center;margin-top:18px}
-  .logos img{height:28px}
-  /* success modal */
-  .modal{
-    position:fixed;top:0;left:0;right:0;bottom:0;
-    display:flex;align-items:center;justify-content:center;
-    background:rgba(0,0,0,0.45);visibility:hidden;opacity:0;transition:all .2s
-  }
-  .modal.show{visibility:visible;opacity:1}
-  .modal-card{background:#fff;padding:26px;border-radius:12px;text-align:center;min-width:260px}
-  .check{width:84px;height:84px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin:0 auto 12px;background:linear-gradient(135deg,#43e97b,#38f9d7)}
-  .check svg{width:40px;height:40px;fill:#fff}
-  .modal h3{margin:0 0 6px}
-  .modal p{color:var(--muted);margin:0 0 10px}
-  .ok-btn{background:var(--success);color:#fff;padding:8px 14px;border-radius:10px;border:none;cursor:pointer;margin-top:12px}
-</style>
+.label {
+  font-weight: bold;
+  color: #555;
+}
+.value { color: #444; }
+
+.repay-btn {
+  width: 100%;
+  padding: 14px;
+  background: #3b32ff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 25px 0;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-top: 25px;
+  color: #007bff;
+  text-align: center;
+}
+
+.input-box {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.copy-btn {
+  padding: 10px 14px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.upi-box-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #0066ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.notice {
+  margin-top: 20px;
+  color: #d60000;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.success-box {
+  display: none;
+  background: #d4ffd6;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  color: #008f1a;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+  </style>
 </head>
-<body>
-  <div class="topbar">Payment</div>
+<body>  <div class="container">
+    <h2>Credit Guru</h2><div class="row"><span class="label">Name</span><span class="value">Sagar K</span></div>
+<div class="row"><span class="label">Loan Amount</span><span class="value">₹5,000</span></div>
+<div class="row"><span class="label">Renewal Day</span><span class="value">7 Day</span></div>
+<div class="row"><span class="label">Renewal Fee</span><span class="value">₹1,900</span></div>
+<div class="row"><span class="label">Repayment Amount</span><span class="value" style="color:#ff007d;">₹1,900</span></div>
 
-  <div class="wrap">
-    <div class="card">
-      <div style="overflow:hidden">
-        <div style="float:left;font-weight:700;color:#222">Order will be closed in:</div>
-        <div class="time" id="timer">2 : 31</div>
-      </div>
+<button class="repay-btn" onclick="openPayment()">Repay Now</button>
 
-      <div class="label">Amount</div>
-      <div class="amount">₹500</div>
+<div id="payment-section" style="display:none;">
+  <h3 class="section-title">Payment</h3>
 
-      <div class="label">VPA / UPI</div>
-      <div class="upi-row">
-        <input id="upiInput" class="upi-input" value="paytm.s1x87n1@pty" readonly />
-        <button class="copy-btn" id="copyBtn">COPY</button>
-      </div>
-
-      <a style="display:block;margin-top:10px;color:var(--btn);font-size:14px;text-decoration:none">➤ How to transfer money</a>
-
-      <div class="grid">
-        <div class="app">PhonePe</div>
-        <div class="app">Paytm</div>
-        <div class="app">GPay</div>
-        <div class="app">UPI</div>
-      </div>
-
-      <div style="margin-top:12px;font-weight:700;color:#1e3a8a">↓ Fill the UTR number after payment</div>
-
-      <div class="utr">
-        <input id="utr" class="input-utr" maxlength="12" placeholder="Input UTR number" />
-      </div>
-
-      <button id="submitUTR" class="submit-btn">Submit UTR</button>
-
-      <div class="notice">
-        1. One UPI can only transfer money once.<br>
-        2. Don't change the payment amount.<br>
-        3. Don't pay from @icici or money may be lost.
-      </div>
-
-      <div class="logos" aria-hidden>
-        <!-- small logos -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/PhonePe_Logo.png" alt="phonepe">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Paytm_logo.png" alt="paytm">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Pay_Logo.svg" alt="gpay">
-      </div>
-    </div>
+  <div class="upi-box-wrapper">
+    <input id="upi" class="input-box" value="paytm.s1x87n1@pty" readonly />
+    <button class="copy-btn" onclick="copyUPI()">COPY</button>
   </div>
 
-  <!-- success modal -->
-  <div class="modal" id="modal">
-    <div class="modal-card">
-      <div class="check" id="checkBox">
-        <!-- animated check SVG -->
-        <svg viewBox="0 0 52 52"><path d="M14 27 L21 33 L38 16" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-      </div>
-      <h3>Payment Submitted</h3>
-      <p>UTR submitted successfully. Thank you!</p>
-      <button class="ok-btn" id="okBtn">OK</button>
-    </div>
+  <input id="utr" class="input-box" placeholder="Enter UTR Number" />
+
+  <button class="submit-btn" onclick="submitUTR()">Submit UTR</button>
+
+  <div class="notice">
+    ● One UPI can only transfer money once.<br>
+    ● DO NOT change payment amount or UPI.<br>
+    ● Don't pay using @icici.
   </div>
 
-<script>
-  // Timer (simple countdown from 2:31)
-  (function(){
-    var total = 2*60 + 31;
-    var timerEl = document.getElementById('timer');
-    function tick(){
-      if(total<=0){ timerEl.textContent = '0 : 00'; return; }
-      var m = Math.floor(total/60);
-      var s = total%60;
-      timerEl.textContent = m + ' : ' + (s<10? '0'+s : s);
-      total--;
-      setTimeout(tick, 1000);
+  <div id="success" class="success-box">✔ UTR Submitted Successfully!</div>
+</div>
+
+  </div>  <script>
+    function openPayment() {
+      document.getElementById("payment-section").style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
     }
-    tick();
-  })();
 
-  // copy UPI
-  document.getElementById('copyBtn').addEventListener('click', function(){
-    var upi = document.getElementById('upiInput').value;
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(upi).then(function(){
-        showToast('UPI copied to clipboard');
-      }, function(){
-        fallbackCopy(upi);
-      });
-    } else {
-      fallbackCopy(upi);
+    function copyUPI() {
+      let upi = document.getElementById("upi");
+      navigator.clipboard.writeText(upi.value);
+      alert("UPI ID Copied!");
     }
-  });
 
-  function fallbackCopy(text){
-    var tmp = document.createElement('textarea');
-    tmp.value = text;
-    document.body.appendChild(tmp);
-    tmp.select();
-    try { document.execCommand('copy'); showToast('UPI copied to clipboard'); }
-    catch(e){ alert('Copy failed — please copy manually'); }
-    document.body.removeChild(tmp);
-  }
-
-  function showToast(msg){
-    // simple alert-style short-notice
-    var t = document.createElement('div');
-    t.textContent = msg;
-    t.style.position = 'fixed';
-    t.style.left = '50%';
-    t.style.transform = 'translateX(-50%)';
-    t.style.bottom = '22px';
-    t.style.padding = '10px 14px';
-    t.style.background = '#111';
-    t.style.color = '#fff';
-    t.style.borderRadius = '8px';
-    t.style.opacity = '0';
-    t.style.transition = 'opacity .2s, bottom .2s';
-    document.body.appendChild(t);
-    setTimeout(function(){ t.style.opacity='1'; t.style.bottom='32px'; }, 10);
-    setTimeout(function(){ t.style.opacity='0'; t.style.bottom='22px'; setTimeout(function(){ document.body.removeChild(t); },300); }, 1700);
-  }
-
-  // submit UTR
-  document.getElementById('submitUTR').addEventListener('click', function(){
-    var v = document.getElementById('utr').value.trim();
-    if(v.length===12 && /^\d{12}$/.test(v)){
-      // success animation -> show modal
-      showModal();
-    } else {
-      alert('Enter valid 12 digit UTR number');
+    function submitUTR() {
+      let utr = document.getElementById("utr").value.trim();
+      if (utr.length < 6) {
+        alert("Enter valid UTR number");
+        return;
+      }
+      document.getElementById("success").style.display = "block";
     }
-  });
-
-  // modal controls
-  var modal = document.getElementById('modal');
-  var okBtn = document.getElementById('okBtn');
-  okBtn.addEventListener('click', function(){
-    hideModal();
-    // optionally redirect back to index or show another message
-    window.location.href = 'index.html';
-  });
-
-  function showModal(){
-    modal.classList.add('show');
-    // small scale-up animation
-    var chk = document.getElementById('checkBox');
-    chk.style.transform = 'scale(0.6)';
-    chk.style.opacity = 0;
-    setTimeout(function(){ chk.style.transition='transform .35s cubic-bezier(.2,.9,.3,1), opacity .35s'; chk.style.transform='scale(1)'; chk.style.opacity=1; }, 50);
-  }
-  function hideModal(){
-    modal.classList.remove('show');
-  }
-</script>
-</body>
-</html> 
+  </script></body>
+</html>
